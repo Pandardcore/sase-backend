@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Computers list (look at the default values for pagination parameters)
+# GET     /computers                  controllers.HomeController.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+GET     /books                                                  controllers.BookController.books()
+GET     /books/:id                                              controllers.BookController.book(id:Long)
+POST    /books                                                  controllers.BookController.create()
+PUT     /books/:id                                              controllers.BookController.update(id:Long)
+DELETE  /books/:id                                              controllers.BookController.delete(id:Long)
+
+GET     /books/:bookId/chapters                                 controllers.ChapterController.bookChapters(bookId:Long)
+GET     /books/:bookId/chapters/:chapNumber                     controllers.ChapterController.bookChapterByNumber(bookId:Long, chapNumber:Integer)
+GET     /chapters/:id                                           controllers.ChapterController.chapterById(id:Long)
+POST    /chapters                                               controllers.ChapterController.create()
+PUT     /chapters/:id                                           controllers.ChapterController.update(id:Long)
+DELETE  /chapters/:id                                           controllers.ChapterController.delete(id:Long)
+
+GET     /books/:bookId/chapters/:chapNumber/pages               controllers.PageController.chapterPages(bookId:Long, chapNumber:Integer)
+GET     /books/:bookId/chapters/:chapNumber/pages/:pageNumber   controllers.PageController.chapterPageByNumber(bookId:Long, chapNumber:Integer, pageNumber:Integer)
+GET     /pages/:id                                              controllers.PageController.pageById(id:Long)
+POST    /pages                                                  controllers.PageController.create()
+PUT     /pages/:id                                              controllers.PageController.update(id:Long)
+DELETE  /pages/:id                                              controllers.PageController.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
